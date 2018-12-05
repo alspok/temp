@@ -1,0 +1,21 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <textarea class='textarea-class' style='border: 0.5px solid black; width: 600px; height: 200px;'>Some text</textarea>
+        
+    </body>
+    <script>
+        function mouseEvent(event){
+            
+            var message = event.type;
+            event.innerHTML = message;
+            console.log(message);
+        }
+
+        var textArea = document.querySelector('.textarea-class');
+        console.log(textArea);
+        textArea.addEventListener('click', mouseEvent);
+    </script>
+</html>
