@@ -1,4 +1,5 @@
 <html>
+<<<<<<< HEAD
     <body>
         <div class='place-to-insert'>Place to insert dynamic block.</div>
         <button type='button' class='button' style='width: 60; height: 20'>Click</button>
@@ -6,4 +7,38 @@
         <!-- <script src='../temp/class.insertblock.js' async></script> -->
         <script src='../temp/insertblock.js' async></script>
     </body>
+=======
+    <head>
+
+    </head>
+    <body>
+        <div class='div-class1'>inside div1</div>
+        <div class='div-class2'>inside div2</div>
+    </body>
+    <script>
+        // var divArea = document.querySelector('.div-class1');
+        var divArea = document.getElementsByClassName('div-class1')[0];
+            divArea.addEventListener('mouseover', function(){
+            divArea.innerHTML = "<img src='burgericon.png' alt='burger' width='50' height='50'>";
+        });
+
+        var imgArea = document.getElementsByClassName('div-class2')[0];
+        imgArea.addEventListener('click', function(){
+            var image = showImage('burgericon.png', 40, 40);
+            imgArea.innerHTML.scr = image;
+            // imgArea.appendChild(image);
+        });
+        
+
+        function showImage(src, width, height){
+            // var img = document.getElementsByClassName('div-class2').createElement("img");
+            var img = document.createElement('img');
+            img.src = src;
+            img.width = width;
+            img.height = height;
+
+            return img;
+        }
+    </script>
+>>>>>>> 74f451d0501d60e6ea2e04d96ec15c848175276e
 </html>
