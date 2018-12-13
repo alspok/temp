@@ -1,31 +1,15 @@
-class InsertBlock{
-
-    constructor(clickButton, containerBlock, blockToInsert, textToInsert){
-        this.clickButton = clickButton;
-        this.containerBlock = containerBlock;
-        this.blockToInsert = blockToInsert;
-        this.textToInsert = textToInsert;
-        }
-
-    inBlock(){
-
-        for(var i = 0; i < this.clicdButton.length; i++){
-            var block = document.createElement(this.containerBlock);
-            block.innerHTML = this.textToInsert ;
-            var contBlock = document.querySelector(this.blockToInsert);
-            contBlock.appendChild(block);
-        }
-    }
-}
-
-var button = document.querySelectorAll('button.button');
-button.addEventListener('click', insertInPlace);
-
+var onEvent = 'click';
+var selectBlock = 'button.button';
 var containerBlock = 'div';
 var blockToInsert = 'div.place-to-insert';
 var textToInsert = 'Some text to insert.';
 
+var button = document.querySelectorAll(selectBlock);
+for(var i = 0; i < button.length; i++){
+    button[i].addEventListener(onEvent, insertInPlace);
+}
+
 function insertInPlace(){
     var insert = new InsertBlock(button, containerBlock, blockToInsert, textToInsert);
-    insert.inBlock();    
+    insert.insertBlock();    
 }
