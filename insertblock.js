@@ -15,7 +15,7 @@ class InsertBlock{
             button[i].addEventListener('click', function(){
             console.log(this.textToInsert);
         
-            var block = document.createElement(this.blockToInsert);
+            var block = document.createElement(this.containerBlock);
             block.innerHTML = this.textToInsert ;
             var contBlock = document.querySelector(this.containerBlock);
             contBlock.appendChild(block);
@@ -29,7 +29,7 @@ class InsertBlock{
 var containerBlock = 'div';
 var blockToInsert = 'div.place-to-insert';
 var clickButton = 'button';
-var textToInsert = 'Inserted text'
+var textToInsert = 'Inserted text';
 
 var insert = new InsertBlock(containerBlock, blockToInsert, textToInsert, clickButton);
 insert.inBlock();
