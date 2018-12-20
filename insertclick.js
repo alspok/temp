@@ -1,48 +1,39 @@
-class InsertBlock{
+// var onEvent = 'click'
+// var tagToInsert = 'div';
+// var tagClassToInsert = 'created-tag';
+// var blockToInsert = 'div.place-to-insert';
+// var textToInsert = 'This text was inserted dinamicaly';
 
-    constructor(clickButton, containerBlock, blockToInsert, textToInsert){
-        this.clickButton = clickButton;
-        this.containerBlock = containerBlock;
-        this.blockToInsert = blockToInsert;
-        this.textToInsert = textToInsert;
-    }
-
-    inBlock(){
-
-        var button = document.querySelectorAll(this.clickButton);
-        
-        for(var i = 0; i < button.length; i++){
-            button[i].addEventListener('click', function(){
-            console.log(this.textToInsert);
-        
-            var block = document.createElement(this.blockToInsert);
-            block.innerHTML = this.textToInsert ;
-            containerBlock = document.querySelector(this.containerBlock);
-            containerBlock.appendChild(block);
-            });
-        }
-    }
-}
-
-var clickButton = 'button.button';
-var containerBlock = 'div';
-var blockToInsert = 'div.place-to-insert';
-var textToInsert = 'This text was inserted dinamicaly';
-
-var insert = new InsertBlock(clickButton, containerBlock, blockToInsert, textToInsert);
-insert.inBlock();
-
-// var button = document.querySelectorAll(clickButton);
-
-// for(var i = 0; i < button.length; i++){
-//     button[i].addEventListener('click', function(){
-//     // alert("button was clicked");
-//     // var HTMLText = 'some text';
-//     console.log(textToInsert);
-
-//     blockToInsert = document.createElement( 'div' );
-//     blockToInsert.innerHTML = HTMLText ;
-//     containerBlock = document.querySelector('div.place-to-insert');
-//     containerBlock.appendChild( blockToInsert );
+// var button = document.querySelector('button.button');
+// if(document.querySelector('div.created-tag') == null){
+//         button.addEventListener(onEvent, function(){
+//         var insert = new InsertBlock(tagToInsert, blockToInsert, textToInsert);
+//         insert.insertBlock();
 //     });
 // }
+
+var selectBlock = 'textarea.text-area';
+// var selectBlock = 'textarea.text-area';
+var tagToInsert = 'div';
+// var blockBeforeInsert = 'div.place-to-insert';
+var blockBeforeInsert = 'insert-before';
+var textToInsert =
+`
+<div class='block-edit-bar'>
+    <button type="button" class="btn bg-deep-purple waves-effect btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+        <i class="material-icons">settings</i>
+        <span>SETTINGS</span>
+    </button>
+</div>
+`;
+var deleteBlock = 'div.created-tag';
+
+document.querySelector(selectBlock).onmouseover = function(){
+    var insertEvent = new HandleBlock(tagToInsert, blockBeforeInsert, textToInsert, deleteBlock);
+    insertEvent.insertBlock();
+};
+
+document.querySelector(selectBlock).onmouseout = function(){
+    var deleteEvent = new HandleBlock(tagToInsert, blockBeforeInsert, textToInsert, deleteBlock);
+    deleteEvent.deleteBlock();
+}
