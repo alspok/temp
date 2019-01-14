@@ -1,8 +1,9 @@
 class HandleNode{
 
-    constructor(parentNode, tagToInsert, insertHTML){
+    constructor(parentNode, tagToInsert, classToInsert, insertHTML){
         this.parentNode = parentNode;
         this.tagToInsert = tagToInsert;
+        this.classToInsert = classToInsert;
         this.insertHTML = insertHTML;
     }
     
@@ -15,11 +16,21 @@ class HandleNode{
     insertChild(){
 
         var newNode = document.createElement(this.tagToInsert);
+        newNode.classList.add('new-node');
         newNode.innerHTML = this.insertHTML;
         this.parentNode.appendChild(newNode);
     }
 
+    removeChild(){
+        var newNode = document.querySelector(this.tagToInsert + '.' + this.classToInsert);
+        newNode.remove();
+    }
+
     insertBeforeChild(){
+        var newNode = document.createElement(this.tagToInsert);
+        newNode.innerHTML = this.insertHTML;
+        var childNode = this.parentNode.firstChild;
+        this.parentNode.insertBefore(newNode, childNode);
 
     }
 }

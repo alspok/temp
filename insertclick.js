@@ -1,5 +1,6 @@
 var parentTag = 'div.parent-block';
 var tagToInsert = 'div';
+var classToInsert = 'new-node';
 var insertHTML =
 `
 <div class='block-edit-bar'>
@@ -12,7 +13,14 @@ var insertHTML =
 var deleteBlock = 'div.created-tag';
 
 var parentNode = document.querySelector(parentTag);
-    parentNode.addEventListener('mouseover', function(){
-        var newNode = new HandleNode(parentNode, tagToInsert, insertHTML);
-        newNode.createChild();
+    parentNode.addEventListener('mouseenter', function(){
+        var newNode = new HandleNode(parentNode, tagToInsert, classToInsert, insertHTML);
+        newNode.insertChild();
     });
+
+    parentNode.addEventListener('mouseout', function(){
+        var newNode = new HandleNode(parentNode, tagToInsert, classToInsert, insertHTML);
+        newNode.removeChild();
+    });
+
+
